@@ -8,7 +8,7 @@ ELASTICSEARCH_VERSION="8"  # Specify the desired Elasticsearch version
 echo "Installing Prometheus version: $PROMETHEUS_VERSION"
 
 # Download Prometheus
-wget https://github.com/prometheus/prometheus/releases/download/v$PROMETHEUS_VERSION/prometheus-$PROMETHEUS_VERSION.linux-arm64.tar.gz -O prometheus.tar.gz
+wget https://github.com/prometheus/prometheus/releases/download/v$PROMETHEUS_VERSION/prometheus-$PROMETHEUS_VERSION.linux-amd64.tar.gz -O prometheus.tar.gz
 
 # Extract and Install
 tar xvf prometheus.tar.gz

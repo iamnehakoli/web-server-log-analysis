@@ -9,10 +9,10 @@ systemctl enable nginx
 systemctl start nginx
 echo "Nginx installed and started successfully."
 
-# Download and install Node Exporter for ARM64
+# Download and install Node Exporter for amd64
 echo "Installing Node Exporter..."
 NODE_EXPORTER_VERSION="1.8.2"
-NODE_EXPORTER_URL="https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.linux-arm64.tar.gz"
+NODE_EXPORTER_URL="https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz"
 
 # Create a directory for Node Exporter
 mkdir -p /opt/node_exporter
@@ -20,8 +20,8 @@ cd /opt/node_exporter
 
 # Download and extract Node Exporter
 curl -LO ${NODE_EXPORTER_URL}
-tar -xvzf node_exporter-${NODE_EXPORTER_VERSION}.linux-arm64.tar.gz --strip-components=1
-rm node_exporter-${NODE_EXPORTER_VERSION}.linux-arm64.tar.gz
+tar -xvzf node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz --strip-components=1
+rm node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz
 
 # Create a systemd service for Node Exporter
 echo "Creating systemd service for Node Exporter..."
@@ -58,8 +58,8 @@ systemctl is-active node_exporter
 
 echo "Installation and configuration of Nginx and Node Exporter completed successfully!"
 
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.17.1-arm64.deb
-sudo dpkg -i filebeat-8.17.1-arm64.deb
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.17.1-amd64.deb
+sudo dpkg -i filebeat-8.17.1-amd64.deb
 
 sudo cp /vagrant/filebeat/filebeat.yml /etc/filebeat/filebeat.yml
 sudo cp /vagrant/filebeat/nginx.yml /etc/filebeat/modules.d/nginx.yml

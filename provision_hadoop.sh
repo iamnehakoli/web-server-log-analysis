@@ -1,13 +1,4 @@
-# Install apache
-echo "Installing apache..."
 apt-get update -y
-apt-get install apache2 -y
-
-# Enable and start apache service
-echo "Configuring apache..."
-systemctl enable apache2
-systemctl start apache2
-echo "apache installed and started successfully."
 
 # Download and install Node Exporter for amd64
 echo "Installing Node Exporter..."
@@ -50,23 +41,7 @@ systemctl enable node_exporter
 systemctl start node_exporter
 
 # Verify installations
-echo "Verifying installations..."
-echo -n "apache status: "
-systemctl is-active apache2
 echo -n "Node Exporter status: "
 systemctl is-active node_exporter
 
-echo "Installation and configuration of apache and Node Exporter completed successfully!"
-
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.17.1-amd64.deb
-sudo dpkg -i filebeat-8.17.1-amd64.deb
-
-sudo cp /vagrant/filebeat/filebeat.yml /etc/filebeat/filebeat.yml
-sudo cp /vagrant/filebeat/apache.yml /etc/filebeat/modules.d/apache.yml
-
-sudo filebeat modules enable apache
-sudo filebeat setup
-
-sudo systemctl enable filebeat
-sudo systemctl start filebeat
-sudo systemctl status filebeat
+echo "Installation and configuration of Nginx and Node Exporter completed successfully!"
