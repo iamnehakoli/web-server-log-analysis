@@ -8,15 +8,6 @@ Run the following command to provision the necessary VMs:
 vagrant up storage; vagrant up kafka; vagrant up hadoop; vagrant up monitoring; vagrant up nginx; vagrant up apache
 ```
 
-### Service Endpoints
-- **Nginx**: [http://192.168.56.10](http://192.168.56.10)
-- **Apache**: [http://192.168.56.11](http://192.168.56.11)
-- **Prometheus**: [http://192.168.56.13:9090](http://192.168.56.13:9090/targets)
-- **Elasticsearch**: [http://192.168.56.13:9200](http://192.168.56.13:9200)
-- **Grafana**: [http://192.168.56.15:3000](http://192.168.56.15:3000)
-- **Kibana**: [http://192.168.56.13:5601](http://192.168.56.13:5601)
-- **Hadoop**: [http://192.168.56.14:9870](http://192.168.56.14:9870)
-
 ## Kafka Log Consumption
 
 ### Step 1: Login to Kafka VM
@@ -89,6 +80,15 @@ cd fake-log-generator
 pip install -r requirements.txt
 python fake-log-generator.py -n 0 --log-type APACHE --min-delay 1 --max-delay 100 | sudo tee /var/log/apache2/access.log
 ```
+
+### Service Endpoints
+- **Nginx**: [http://192.168.56.10](http://192.168.56.10)
+- **Apache**: [http://192.168.56.11](http://192.168.56.11)
+- **Prometheus**: [http://192.168.56.13:9090](http://192.168.56.13:9090/targets)
+- **Elasticsearch**: [http://192.168.56.13:9200](http://192.168.56.13:9200)
+- **Grafana**: [http://192.168.56.15:3000](http://192.168.56.15:3000)
+- **Kibana**: [http://192.168.56.13:5601](http://192.168.56.13:5601)
+- **Hadoop**: [http://192.168.56.14:9870](http://192.168.56.14:9870)
 
 ## Notes
 - Ensure that all VMs are up and running before proceeding.
