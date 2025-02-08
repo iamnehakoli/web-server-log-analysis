@@ -12,13 +12,13 @@ class KafkaConsumerExample
         var conf = new ConsumerConfig
         {
             GroupId = "hdfs-consumer-group",
-            BootstrapServers = "192.168.56.11:9092", // Kafka broker address
+            BootstrapServers = "192.168.56.12:9092", // Kafka broker address
             AutoOffsetReset = AutoOffsetReset.Earliest,
             EnableAutoCommit = false // Disable auto-commit for manual control
         };
 
         // HDFS WebHDFS URL
-        string hdfsUrl = "http://192.168.56.13:9870/webhdfs/v1/logs/nginx_logs.txt?op=APPEND";
+        string hdfsUrl = "http://192.168.56.14:9870/webhdfs/v1/logs/nginx.log?op=APPEND&user.name=hadoop";
 
         using (var consumer = new ConsumerBuilder<Ignore, string>(conf).Build())
         {

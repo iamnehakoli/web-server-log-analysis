@@ -128,4 +128,4 @@ install_node_exporter
 install_filebeat
 install_metricbeat
 verify_installations
-generate_fake_nginx_logs
+# generate_fake_nginx_logs
