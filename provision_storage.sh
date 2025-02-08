@@ -1,24 +1,33 @@
 #!/bin/bash
+set -x
 
+# Global platform detection
+get_platform() {
+    local PLATFORM=$(uname -m)
+    if [[ "$PLATFORM" == "aarch64" ]]; then
+        PLATFORM="arm64"
+    elif [[ "$PLATFORM" == "x86_64" ]]; then
+        PLATFORM="amd64"
+    fi
+    echo "$PLATFORM"
+}
+
+PLATFORM=$(get_platform)
 # Set versions for Prometheus and Elasticsearch
-PROMETHEUS_VERSION="3.1.0"  # Specify the desired Prometheus version
-ELASTICSEARCH_VERSION="8"  # Specify the desired Elasticsearch version
+PROMETHEUS_VERSION="3.1.0" 
+ELASTICSEARCH_VERSION="8"
 
-# Install Prometheus
-echo "Installing Prometheus version: $PROMETHEUS_VERSION"
+# Function to install Prometheus
+install_prometheus() {
+    echo "Installing Prometheus version: $PROMETHEUS_VERSION"
 
-# Download Prometheus
-wget https://github.com/prometheus/prometheus/releases/download/v$PROMETHEUS_VERSION/prometheus-$PROMETHEUS_VERSION.linux-amd64.tar.gz -O prometheus.tar.gz
+    wget https://github.com/prometheus/prometheus/releases/download/v$PROMETHEUS_VERSION/prometheus-$PROMETHEUS_VERSION.linux-${PLATFORM}.tar.gz -O prometheus.tar.gz
+    tar xvf prometheus.tar.gz
+    mkdir -p /opt/prometheus /etc/prometheus/ /var/lib/prometheus/data
+    mv ./prometheus-$PROMETHEUS_VERSION*/* /opt/prometheus/
+    cp /vagrant/prometheus/prometheus.yml /etc/prometheus/
 
-# Extract and Install
-tar xvf prometheus.tar.gz
-mkdir -p /opt/prometheus /etc/prometheus/ /var/lib/prometheus/data
-mv ./prometheus-$PROMETHEUS_VERSION*/* /opt/prometheus/
-
-cp /vagrant/prometheus/prometheus.yml /etc/prometheus/
-
-# Create Prometheus Service
-echo "[Unit]
+    echo "[Unit]
 Description=Prometheus Monitoring System
 Wants=network-online.target
 After=network-online.target
@@ -32,57 +41,39 @@ Restart=always
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/prometheus.service
 
-# Reload systemd and start Prometheus
-sudo systemctl daemon-reload
-sudo systemctl enable prometheus
-sudo systemctl start prometheus
+    sudo systemctl daemon-reload
+    sudo systemctl enable prometheus
+    sudo systemctl start prometheus
 
-echo "Prometheus installation completed."
+    echo "Prometheus installation completed."
+}
 
-# # Install Elasticsearch
-# echo "Installing Elasticsearch version: $ELASTICSEARCH_VERSION"
+# Function to install Elasticsearch
+install_elasticsearch() {
+    echo "Installing Elasticsearch version: $ELASTICSEARCH_VERSION"
 
-# # Install dependencies
-# sudo apt-get update && sudo apt-get install -y apt-transport-https ca-certificates wget curl gnupg
+    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+    sudo apt-get install -y apt-transport-https openjdk-17-jdk
+    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/${ELASTICSEARCH_VERSION}.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-${ELASTICSEARCH_VERSION}.x.list
 
-# # Add Elasticsearch GPG key
-# wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+    sudo apt-get update && sudo apt-get install -y elasticsearch
+    echo "network.host: 192.168.56.13" >> /etc/elasticsearch/elasticsearch.yml
+    sudo sed -i '/xpack.security.enabled/c\xpack.security.enabled: false' /etc/elasticsearch/elasticsearch.yml
 
-# # Add the Elasticsearch APT repository
-# echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+    sudo systemctl daemon-reload
+    sudo systemctl enable elasticsearch.service
+    sudo systemctl start elasticsearch.service
 
-# # Install Elasticsearch
-# sudo apt-get update
-# sudo apt-get install -y elasticsearch=$ELASTICSEARCH_VERSION
+    echo "Elasticsearch installation completed."
+}
 
-# # Enable and start Elasticsearch service
-# sudo systemctl enable elasticsearch
-# sudo systemctl start elasticsearch
+# Function to verify installations
+verify_installations() {
+    echo "Verifying installations..."
+    echo -n "Prometheus status: "; systemctl is-active prometheus
+    echo -n "Elasticsearch status: "; systemctl is-active elasticsearch
+}
 
-# # Verify Elasticsearch
-# curl -X GET "localhost:9200/?pretty"
-
-# echo "Elasticsearch installation completed."
-
-wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
-
-sudo apt-get install apt-transport-https openjdk-17-jdk
-
-echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
-
-sudo apt-get update && sudo apt-get install elasticsearch
-
-echo "network.host: 192.168.56.12" >> /etc/elasticsearch/elasticsearch.yml
-sudo sed -i '/xpack.security.enabled/c\xpack.security.enabled: false' /etc/elasticsearch/elasticsearch.yml
-
-sudo systemctl daemon-reload
-sudo systemctl enable elasticsearch.service
-
-sudo systemctl start elasticsearch.service
-
-# # Verify installations
-echo "Verifying installations..."
-echo -n "Prometheus status: "
-systemctl is-active prometheus
-echo -n "Elasticsearch status: "
-systemctl is-active elasticsearch
+install_prometheus
+install_elasticsearch
+verify_installations

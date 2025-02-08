@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Zj6zFqo9cqo=",
+  "dgSpecHash": "4x00GN64qWk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\neha.koli\\Desktop\\msc-project\\web-server-log-analysis\\KafkaConsumerApp\\KafkaConsumerApp.csproj",
+  "projectFilePath": "C:\\Users\\neha.koli\\Desktop\\msc-project\\latest-dev\\KafkaConsumerApp\\KafkaConsumerApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\neha.koli\\.nuget\\packages\\confluent.kafka\\2.8.0\\confluent.kafka.2.8.0.nupkg.sha512",
     "C:\\Users\\neha.koli\\.nuget\\packages\\librdkafka.redist\\2.8.0\\librdkafka.redist.2.8.0.nupkg.sha512",
