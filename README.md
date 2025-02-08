@@ -30,24 +30,36 @@ vagrant ssh kafka
 ```
 
 ### Step 3: Consume Apache Logs from Kafka Topic (In a new terminal)
+Login to Kafka VM
 ```sh
 vagrant ssh kafka
+```
+Run Kafka consumer script
+```sh
 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 192.168.56.12:9092 --topic apache-logs --from-beginning
 ```
 
 ## Running the .NET Core Kafka Consumer
 Run the following commands to start the .NET Core application that reads Kafka messages and stores them in HDFS:
-
+Change working directory
 ```sh
 cd C:\Users\neha.koli\Desktop\msc-project\latest-dev\KafkaConsumerApp 
+```
+Run .NET application to read Kafka messages and write them to HDFS
+```sh
 dotnet run
 ```
 
 ## Generating Logs
 
 ### Step 1: Generate Nginx Logs (in a new terminal)
+Login to Nginx VM
 ```sh
 vagrant ssh nginx
+```
+
+Clone, install required dependencies and run script to generate fake Nginx logs
+```sh
 sudo apt install git virtualenv -y
 git clone https://github.com/nehachitodkar/fake-log-generator.git
 virtualenv dev
@@ -58,8 +70,13 @@ python fake-log-generator.py -n 0 --log-type NGINX --min-delay 1 --max-delay 100
 ```
 
 ### Step 2: Generate Apache Logs (in a new terminal)
+Login to Nginx VM
 ```sh
 vagrant ssh apache
+```
+
+Clone, install required dependencies and run script to generate fake Apache logs
+```sh
 sudo apt install git virtualenv -y
 git clone https://github.com/nehachitodkar/fake-log-generator.git
 virtualenv dev
