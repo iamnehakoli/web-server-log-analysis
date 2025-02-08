@@ -95,9 +95,11 @@ start_kafka_ui() {
     echo "Starting Kafka UI..."
     docker run -d --name=kafka-ui \
     -p 8080:8080 \
-    -e KAFKA_CLUSTERS_0_NAME=local \
+    -e KAFKA_CLUSTERS_0_NAME=kafka \
     -e KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS=192.168.56.12:9092 \
     provectuslabs/kafka-ui
+
+    docker ps
 }
 
 install_updates
