@@ -20,6 +20,7 @@ vagrant up storage; vagrant up kafka; vagrant up hadoop; vagrant up monitoring; 
 ## Kafka Log Consumption
 
 ### Step 1: Login to Kafka VM
+Open a new terminal, and run below command to login
 ```sh
 vagrant ssh kafka
 ```
@@ -30,7 +31,7 @@ vagrant ssh kafka
 ```
 
 ### Step 3: Consume Apache Logs from Kafka Topic (In a new terminal)
-Login to Kafka VM
+Open a new terminal, and run below command to login
 ```sh
 vagrant ssh kafka
 ```
@@ -40,8 +41,9 @@ Run Kafka consumer script
 ```
 
 ## Running the .NET Core Kafka Consumer
-Run the following commands to start the .NET Core application that reads Kafka messages and stores them in HDFS:
-Change working directory
+a. Open a new terminal and run the following commands to start the .NET Core application 
+that reads Kafka messages and stores them in HDFS \
+b. Change working directory
 ```sh
 cd C:\Users\neha.koli\Desktop\msc-project\latest-dev\KafkaConsumerApp 
 ```
@@ -53,6 +55,7 @@ dotnet run
 ## Generating Logs
 
 ### Step 1: Generate Nginx Logs (in a new terminal)
+Open a new terminal, and run below command to login
 Login to Nginx VM
 ```sh
 vagrant ssh nginx
@@ -70,6 +73,7 @@ python fake-log-generator.py -n 0 --log-type NGINX --min-delay 1 --max-delay 100
 ```
 
 ### Step 2: Generate Apache Logs (in a new terminal)
+Open a new terminal, and run below command to login
 Login to Nginx VM
 ```sh
 vagrant ssh apache
