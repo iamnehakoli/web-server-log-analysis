@@ -4,6 +4,7 @@ filebeat.inputs:
   enabled: true
   paths:
     - /var/log/nginx/access.log
+    - /var/log/nginx/error.log
   fields:
     service: nginx
   fields_under_root: true

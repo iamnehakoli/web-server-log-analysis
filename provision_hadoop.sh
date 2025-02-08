@@ -85,7 +85,7 @@ HADOOP_VERSION="3.3.6"
 HADOOP_URL="https://downloads.apache.org/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION-aarch64.tar.gz"
 
 # Download Hadoop
-wget -q $HADOOP_URL -O /tmp/hadoop.tar.gz
+wget $HADOOP_URL -O /tmp/hadoop.tar.gz
 
 # Extract Hadoop to /opt/hadoop
 sudo tar -xzf /tmp/hadoop.tar.gz -C /opt/
@@ -98,7 +98,7 @@ rm -f /tmp/hadoop.tar.gz
 # ============================== Step 5: Configure Environment Variables ==============================
 echo "Configuring environment variables for 'hadoop' user..."
 sudo su - hadoop <<EOF
-echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64' >> ~/.bashrc
+echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64' >> ~/.bashrc
 echo 'export HADOOP_HOME=/opt/hadoop' >> ~/.bashrc
 echo 'export PATH=\$PATH:\$HADOOP_HOME/bin:\$HADOOP_HOME/sbin' >> ~/.bashrc
 source ~/.bashrc
@@ -169,7 +169,7 @@ EOF
 
 # Update hadoop-env.sh
 sudo su - hadoop <<EOF
-echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64' >> /opt/hadoop/etc/hadoop/hadoop-env.sh
+echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64' >> /opt/hadoop/etc/hadoop/hadoop-env.sh
 EOF
 
 # ============================== Step 7: Format HDFS ==============================
