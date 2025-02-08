@@ -114,11 +114,12 @@ python fake-log-generator.py -n 0 --log-type APACHE --min-delay 1 --max-delay 10
 ## Service Endpoints
 - **Nginx**: [http://192.168.56.10](http://192.168.56.10)
 - **Apache**: [http://192.168.56.11](http://192.168.56.11)
+- **Apache**: [http://192.168.56.11](http://192.168.56.12)
 - **Prometheus**: [http://192.168.56.13:9090](http://192.168.56.13:9090/targets)
 - **Elasticsearch**: [http://192.168.56.13:9200](http://192.168.56.13:9200)
+- **Hadoop**: [http://192.168.56.14:9870](http://192.168.56.14:9870)
 - **Grafana**: [http://192.168.56.15:3000](http://192.168.56.15:3000)
 - **Kibana**: [http://192.168.56.15:5601](http://192.168.56.15:5601)
-- **Hadoop**: [http://192.168.56.14:9870](http://192.168.56.14:9870)
 
 ---
 

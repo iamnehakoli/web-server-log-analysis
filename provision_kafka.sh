@@ -83,9 +83,27 @@ start_kafka_services() {
 
 }
 
+start_kafka_ui() {
+    echo "Installing Docker..."
+    sudo apt install docker.io -y
+    echo "Configuring Docker..."
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+    # docker run hello-world
+
+    echo "Starting Kafka UI..."
+    docker run -d --name=kafka-ui \
+    -p 8080:8080 \
+    -e KAFKA_CLUSTERS_0_NAME=local \
+    -e KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS=192.168.56.12:9092 \
+    provectuslabs/kafka-ui
+}
+
 install_updates
 install_node_exporter
 install_java
 install_kafka
 start_kafka_services
+start_kafka_ui
 echo "Installation and configuration of Node Exporter and Kafka completed successfully!"
