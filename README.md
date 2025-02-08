@@ -67,7 +67,7 @@ vagrant ssh kafka
 To start the .NET Core application that reads Kafka messages and stores them in HDFS:
 
 ```sh
-cd C:\Users\neha.koli\Desktop\msc-project\latest-dev\KafkaConsumerApp
+cd C:\Users\neha.koli\Desktop\msc-project\web-server-log-analysis\KafkaConsumerApp
 dotnet run
 ```
 
