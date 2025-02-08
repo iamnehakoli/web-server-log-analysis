@@ -82,13 +82,14 @@ python fake-log-generator.py -n 0 --log-type APACHE --min-delay 1 --max-delay 10
 ```
 
 ### Service Endpoints
-- **Nginx**: [http://192.168.56.10](http://192.168.56.10)
-- **Apache**: [http://192.168.56.11](http://192.168.56.11)
-- **Prometheus**: [http://192.168.56.13:9090](http://192.168.56.13:9090/targets)
-- **Elasticsearch**: [http://192.168.56.13:9200](http://192.168.56.13:9200)
-- **Grafana**: [http://192.168.56.15:3000](http://192.168.56.15:3000)
-- **Kibana**: [http://192.168.56.13:5601](http://192.168.56.13:5601)
-- **Hadoop**: [http://192.168.56.14:9870](http://192.168.56.14:9870)
+- **Nginx**: <a href="http://192.168.56.10" target="_blank" rel="noopener noreferrer">http://192.168.56.10</a>
+- **Apache**: <a href="http://192.168.56.11" target="_blank" rel="noopener noreferrer">http://192.168.56.11</a>
+- **Prometheus**: <a href="http://192.168.56.13:9090/targets" target="_blank" rel="noopener noreferrer">http://192.168.56.13:9090</a>
+- **Elasticsearch**: <a href="http://192.168.56.13:9200" target="_blank" rel="noopener noreferrer">http://192.168.56.13:9200</a>
+- **Grafana**: <a href="http://192.168.56.15:3000" target="_blank" rel="noopener noreferrer">http://192.168.56.15:3000</a>
+- **Kibana**: <a href="http://192.168.56.13:5601" target="_blank" rel="noopener noreferrer">http://192.168.56.13:5601</a>
+- **Hadoop**: <a href="http://192.168.56.14:9870" target="_blank" rel="noopener noreferrer">http://192.168.56.14:9870</a>
+
 
 ## Notes
 - Ensure that all VMs are up and running before proceeding.
