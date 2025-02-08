@@ -117,7 +117,7 @@ python fake-log-generator.py -n 0 --log-type APACHE --min-delay 1 --max-delay 10
 - **Prometheus**: [http://192.168.56.13:9090](http://192.168.56.13:9090/targets)
 - **Elasticsearch**: [http://192.168.56.13:9200](http://192.168.56.13:9200)
 - **Grafana**: [http://192.168.56.15:3000](http://192.168.56.15:3000)
-- **Kibana**: [http://192.168.56.15:5601](http://192.168.56.13:5601)
+- **Kibana**: [http://192.168.56.15:5601](http://192.168.56.15:5601)
 - **Hadoop**: [http://192.168.56.14:9870](http://192.168.56.14:9870)
 
 ---
