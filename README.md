@@ -181,6 +181,18 @@ python fake-log-generator.py -n 0 --log-type APACHE --sleep 1
 
 ---
 
+## Destroy the VMs
+To destroy a specific VM run below command from the web-server-log-analysis directory,
+```sh
+vagrant destroy <vm-name> # e.g. vagrant destroy nginx
+```
+To destroy all the VMs
+```sh
+vagrant destroy -f
+```
+
+---
+
 ## Notes
 - Ensure all virtual machines are up and running before proceeding.
 - Kafka is used to consume logs from Nginx and Apache and store them in Hadoop.
