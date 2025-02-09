@@ -1,14 +1,17 @@
 [Unit]
-Description=Apache Zookeeper Server
-After=network.target
+Description=Apache Kafka Zookeeper Server
+Documentation=http://kafka.apache.org/documentation.html
+Requires=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/opt/kafka/bin/zookeeper-server-start.sh -daemon /opt/kafka/config/zookeeper.properties
-ExecStop=/opt/kafka/bin/zookeeper-server-stop.sh
-Restart=always
 User=root
 Group=root
+Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
+ExecStart=/opt/kafka/bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
+Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
