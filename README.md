@@ -30,6 +30,7 @@
       - [Step 1: Login to Apache VM](#step-1-login-to-apache-vm)
       - [Step 2: Clone and Set Up Fake Log Generator](#step-2-clone-and-set-up-fake-log-generator-1)
   - [Service Endpoints](#service-endpoints)
+  - [Destroy the VMs](#destroy-the-vms)
   - [Notes](#notes)
 
 ---
@@ -87,6 +88,7 @@ vagrant up storage; vagrant up kafka; vagrant up hadoop; vagrant up monitoring; 
 #### Step 1: Login to Kafka VM
 Open a new terminal and run below command,
 ```sh
+cd Documents\web-server-log-analysis\
 vagrant ssh kafka
 ```
 
@@ -100,6 +102,7 @@ Run the below command in the same terminal,
 #### Step 1: Login to second instance of Kafka VM
 Open a new terminal and run below command,
 ```sh
+cd Documents\web-server-log-analysis\
 vagrant ssh kafka
 ```
 
@@ -127,6 +130,7 @@ dotnet run
 #### Step 1: Login to Nginx VM
 Run below command in a separate terminal,
 ```sh
+cd Documents\web-server-log-analysis\
 vagrant ssh nginx
 ```
 Run below command once you're in the terminal, to switch to root user
@@ -147,6 +151,7 @@ python fake-log-generator.py -n 0 --log-type NGINX --sleep 1
 #### Step 1: Login to Apache VM
 Run below command in a separate terminal,
 ```sh
+cd Documents\web-server-log-analysis\
 vagrant ssh apache
 ```
 Run below command once you're in the terminal, to switch to root user
@@ -174,6 +179,18 @@ python fake-log-generator.py -n 0 --log-type APACHE --sleep 1
 - **Hadoop (hadoop)**: [http://192.168.56.14:9870](http://192.168.56.14:9870)
 - **Grafana (monitoring)**: [http://192.168.56.15:3000](http://192.168.56.15:3000)
 - **Kibana (monitoring)**: [http://192.168.56.15:5601](http://192.168.56.15:5601)
+
+---
+
+## Destroy the VMs
+To destroy a specific VM run below command from the web-server-log-analysis directory,
+```sh
+vagrant destroy <vm-name> # e.g. vagrant destroy nginx
+```
+To destroy all the VMs
+```sh
+vagrant destroy -f
+```
 
 ---
 
