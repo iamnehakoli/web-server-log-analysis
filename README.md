@@ -88,10 +88,14 @@ dotnet run
 
 ### Generate Nginx Logs
 #### Step 1: Login to Nginx VM
+Run below command in a separate terminal,
 ```sh
 vagrant ssh nginx
 ```
-
+Run below command once you're in the terminal, to switch to root user
+```sh
+sudo su
+```
 #### Step 2: Clone and Set Up Fake Log Generator
 ```sh
 git clone https://github.com/nehachitodkar/fake-log-generator.git
@@ -99,15 +103,19 @@ virtualenv dev
 source dev/bin/activate
 cd fake-log-generator
 pip install -r requirements.txt
-python fake-log-generator.py -n 0 --log-type NGINX --min-delay 1 --max-delay 100 | sudo tee /var/log/nginx/access.log
+python fake-log-generator.py -n 0 --log-type NGINX --sleep 1
 ```
 
 ### Generate Apache Logs
 #### Step 1: Login to Apache VM
+Run below command in a separate terminal,
 ```sh
 vagrant ssh apache
 ```
-
+Run below command once you're in the terminal, to switch to root user
+```sh
+sudo su
+```
 #### Step 2: Clone and Set Up Fake Log Generator
 ```sh
 git clone https://github.com/nehachitodkar/fake-log-generator.git
@@ -115,7 +123,7 @@ virtualenv dev
 source dev/bin/activate
 cd fake-log-generator
 pip install -r requirements.txt
-python fake-log-generator.py -n 0 --log-type APACHE --min-delay 1 --max-delay 100 | sudo tee /var/log/apache2/access.log
+python fake-log-generator.py -n 0 --log-type APACHE --sleep 1
 ```
 
 ---
