@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProcessHDFSLogs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94d859dd0941f1d01cd8fb2d3fe33d85723c68cd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46160d16e091f525fe8ad72aad6f41b83b7481e0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProcessHDFSLogs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProcessHDFSLogs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

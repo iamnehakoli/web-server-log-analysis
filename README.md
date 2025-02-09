@@ -1,19 +1,36 @@
 # Web Server Log Analysis System
 
 ## Table of Contents
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Setup and Deployment](#setup-and-deployment)
-  - [Provision Virtual Machines](#provision-virtual-machines)
-- [Kafka Log Consumption](#kafka-log-consumption)
-  - [Consume Nginx Logs](#consume-nginx-logs)
-  - [Consume Apache Logs](#consume-apache-logs)
-- [Running .NET Core Kafka Consumer](#running-net-core-kafka-consumer)
-- [Generating Logs](#generating-logs)
-  - [Generate Nginx Logs](#generate-nginx-logs)
-  - [Generate Apache Logs](#generate-apache-logs)
-- [Service Endpoints](#service-endpoints)
-- [Notes](#notes)
+- [Web Server Log Analysis System](#web-server-log-analysis-system)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Architecture](#architecture)
+  - [Setup and Deployment](#setup-and-deployment)
+    - [Download and Install Required Software](#download-and-install-required-software)
+      - [Install Git](#install-git)
+      - [Install Vagrant](#install-vagrant)
+      - [Install VirtualBox](#install-virtualbox)
+      - [Install .NET Core SDK](#install-net-core-sdk)
+      - [Install Python and Virtualenv](#install-python-and-virtualenv)
+    - [Clone the Repository](#clone-the-repository)
+    - [Provision Virtual Machines](#provision-virtual-machines)
+  - [Kafka Log Consumption](#kafka-log-consumption)
+    - [Consume Nginx Logs](#consume-nginx-logs)
+      - [Step 1: Login to Kafka VM](#step-1-login-to-kafka-vm)
+      - [Step 2: Consume Nginx Logs from Kafka Topic](#step-2-consume-nginx-logs-from-kafka-topic)
+    - [Consume Apache Logs](#consume-apache-logs)
+      - [Step 1: Login to second instance of Kafka VM](#step-1-login-to-second-instance-of-kafka-vm)
+      - [Step 2: Consume Apache Logs from Kafka Topic](#step-2-consume-apache-logs-from-kafka-topic)
+  - [Running .NET Core Kafka Consumer](#running-net-core-kafka-consumer)
+  - [Generating Logs](#generating-logs)
+    - [Generate Nginx Logs](#generate-nginx-logs)
+      - [Step 1: Login to Nginx VM](#step-1-login-to-nginx-vm)
+      - [Step 2: Clone and Set Up Fake Log Generator](#step-2-clone-and-set-up-fake-log-generator)
+    - [Generate Apache Logs](#generate-apache-logs)
+      - [Step 1: Login to Apache VM](#step-1-login-to-apache-vm)
+      - [Step 2: Clone and Set Up Fake Log Generator](#step-2-clone-and-set-up-fake-log-generator-1)
+  - [Service Endpoints](#service-endpoints)
+  - [Notes](#notes)
 
 ---
 
@@ -27,6 +44,26 @@ The **Web Server Log Analysis System** is designed to collect, process, and anal
 ---
 
 ## Setup and Deployment
+### Download and Install Required Software
+
+#### Install Git
+To install Git on Windows, download and install Git from [git-scm.com](https://git-scm.com/downloads).
+
+#### Install Vagrant
+To install Vagrant on Windows, download and install Vagrant from [vagrantup.com](https://www.vagrantup.com/).
+
+#### Install VirtualBox
+To install VirtualBox on Windows, download and install VirtualBox from [virtualbox.org](https://www.virtualbox.org/wiki/Downloads).
+
+#### Install .NET Core SDK
+To install .NET Core SDK on Windows, download and install .NET Core SDK from [dotnet.microsoft.com](https://dotnet.microsoft.com/download).
+
+#### Install Python and Virtualenv
+To install Python on Windows, download and install Python from [python.org](https://www.python.org/downloads/).
+After installing Python, open a command prompt and install Virtualenv:
+```sh
+pip install virtualenv
+```
 
 ### Clone the Repository
 To clone the repository, run the following command:
