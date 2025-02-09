@@ -87,6 +87,7 @@ vagrant up storage; vagrant up kafka; vagrant up hadoop; vagrant up monitoring; 
 #### Step 1: Login to Kafka VM
 Open a new terminal and run below command,
 ```sh
+cd Documents\web-server-log-analysis\
 vagrant ssh kafka
 ```
 
@@ -100,6 +101,7 @@ Run the below command in the same terminal,
 #### Step 1: Login to second instance of Kafka VM
 Open a new terminal and run below command,
 ```sh
+cd Documents\web-server-log-analysis\
 vagrant ssh kafka
 ```
 
@@ -127,6 +129,7 @@ dotnet run
 #### Step 1: Login to Nginx VM
 Run below command in a separate terminal,
 ```sh
+cd Documents\web-server-log-analysis\
 vagrant ssh nginx
 ```
 Run below command once you're in the terminal, to switch to root user
@@ -147,6 +150,7 @@ python fake-log-generator.py -n 0 --log-type NGINX --sleep 1
 #### Step 1: Login to Apache VM
 Run below command in a separate terminal,
 ```sh
+cd Documents\web-server-log-analysis\
 vagrant ssh apache
 ```
 Run below command once you're in the terminal, to switch to root user
