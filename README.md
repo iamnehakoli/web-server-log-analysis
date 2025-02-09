@@ -22,7 +22,7 @@ The **Web Server Log Analysis System** is designed to collect, process, and anal
 
 ## Architecture
 
-![System Architecture](./images/web-server-log-analysis-architecture.png)
+![System Architecture](./images/web-server-log-analysis-system-architecture.png)
 
 ---
 
