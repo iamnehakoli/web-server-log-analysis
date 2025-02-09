@@ -75,19 +75,31 @@ install_kafka() {
 
 start_kafka_services() {
     echo "Starting Zookeeper and Kafka..."
-    /opt/kafka/bin/zookeeper-server-start.sh -daemon /opt/kafka/config/zookeeper.properties
-    /opt/kafka/bin/kafka-server-start.sh -daemon /opt/kafka/config/server.properties
+    # /opt/kafka/bin/zookeeper-server-start.sh -daemon /opt/kafka/config/zookeeper.properties
+    # /opt/kafka/bin/kafka-server-start.sh -daemon /opt/kafka/config/server.properties
+    sudo cp /vagrant/kafka/zookeeper.service /etc/systemd/system/zookeeper.service
+    sudo cp /vagrant/kafka/kafka.service /etc/systemd/system/kafka.service
+
+    sudo systemctl enable zookeeper
+    sudo systemctl start zookeeper
+    sudo systemctl status zookeeper
+
+    sudo systemctl enable kafka
+    sudo systemctl start kafka
+    sudo systemctl status kafka
     sleep 10
     /opt/kafka/bin/kafka-topics.sh --create --topic nginx-logs --bootstrap-server 192.168.56.12:9092 --partitions 1 --replication-factor 1
     /opt/kafka/bin/kafka-topics.sh --create --topic apache-logs --bootstrap-server 192.168.56.12:9092 --partitions 1 --replication-factor 1
     /opt/kafka/bin/kafka-topics.sh --list --bootstrap-server 192.168.56.12:9092
     # /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 192.168.56.12:9092 --topic nginx-logs --group nginx-logs-consumer --from-beginning
-
 }
 
 start_kafka_ui() {
     echo "Installing Docker..."
     sudo apt install docker.io -y
+    sudo systemctl enable docker
+    sudo systemctl start docker
+    sudo systemctl status docker
     echo "Configuring Docker..."
     sudo groupadd docker
     sudo usermod -aG docker $USER
@@ -95,7 +107,10 @@ start_kafka_ui() {
     # docker run hello-world
 
     echo "Starting Kafka UI..."
+    docker stop kafka-ui
+    docker rm kafka-ui
     docker run -d --name=kafka-ui \
+    --restart=always \
     -p 8080:8080 \
     -e KAFKA_CLUSTERS_0_NAME=kafka \
     -e KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS=192.168.56.12:9092 \
