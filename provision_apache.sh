@@ -15,7 +15,7 @@ get_platform() {
 install_apache() {
     echo "Installing Apache..."
     apt-get update -y
-    apt-get install apache2 -y
+    apt-get install apache2 git virtualenv -y
     systemctl enable apache2
     systemctl start apache2
     echo "Apache installed and started successfully."

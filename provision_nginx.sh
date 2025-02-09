@@ -15,7 +15,7 @@ get_platform() {
 install_nginx() {
     echo "Installing Nginx..."
     apt-get update -y
-    apt-get install nginx -y
+    apt-get install nginx git virtualenv -y
     systemctl enable nginx
     systemctl start nginx
     echo "Nginx installed and started successfully."

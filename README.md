@@ -94,7 +94,6 @@ vagrant ssh nginx
 
 #### Step 2: Clone and Set Up Fake Log Generator
 ```sh
-sudo apt install git virtualenv -y
 git clone https://github.com/nehachitodkar/fake-log-generator.git
 virtualenv dev
 source dev/bin/activate
@@ -111,7 +110,6 @@ vagrant ssh apache
 
 #### Step 2: Clone and Set Up Fake Log Generator
 ```sh
-sudo apt install git virtualenv -y
 git clone https://github.com/nehachitodkar/fake-log-generator.git
 virtualenv dev
 source dev/bin/activate
