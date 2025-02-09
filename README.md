@@ -28,6 +28,14 @@ The **Web Server Log Analysis System** is designed to collect, process, and anal
 
 ## Setup and Deployment
 
+### Clone the Repository
+To clone the repository, run the following command:
+
+```sh
+cd ~/Documents/
+git clone https://github.com/nehachitodkar/web-server-log-analysis.git
+cd web-server-log-analysis
+```
 ### Provision Virtual Machines
 To set up the required virtual machines, run the following command:
 
@@ -40,22 +48,26 @@ vagrant up storage; vagrant up kafka; vagrant up hadoop; vagrant up monitoring; 
 ## Kafka Log Consumption
 ### Consume Nginx Logs
 #### Step 1: Login to Kafka VM
+Open a new terminal and run below command,
 ```sh
 vagrant ssh kafka
 ```
 
 #### Step 2: Consume Nginx Logs from Kafka Topic
+Run the below command in the same terminal,
 ```sh
 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 192.168.56.12:9092 --topic nginx-logs --from-beginning
 ```
 
 ### Consume Apache Logs
-#### Step 1: Login to Kafka VM
+#### Step 1: Login to second instance of Kafka VM
+Open a new terminal and run below command,
 ```sh
 vagrant ssh kafka
 ```
 
 #### Step 2: Consume Apache Logs from Kafka Topic
+Run the below command in the same terminal,
 ```sh
 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 192.168.56.12:9092 --topic apache-logs --from-beginning
 ```
@@ -63,11 +75,10 @@ vagrant ssh kafka
 ---
 
 ## Running .NET Core Kafka Consumer
-
-To start the .NET Core application that reads Kafka messages and stores them in HDFS:
+Open a new terminal to start the .NET Core application that reads Kafka messages and stores them in HDFS:
 
 ```sh
-cd C:\Users\neha.koli\Desktop\msc-project\web-server-log-analysis\KafkaConsumerApp
+cd Documents\web-server-log-analysis\KafkaConsumerApp
 dotnet run
 ```
 
@@ -112,14 +123,14 @@ python fake-log-generator.py -n 0 --log-type APACHE --min-delay 1 --max-delay 10
 ---
 
 ## Service Endpoints
-- **Nginx**: [http://192.168.56.10](http://192.168.56.10)
-- **Apache**: [http://192.168.56.11](http://192.168.56.11)
-- **Kafka**: [http://192.168.56.12:8080](http://192.168.56.12:8080)
-- **Prometheus**: [http://192.168.56.13:9090](http://192.168.56.13:9090/targets)
-- **Elasticsearch**: [http://192.168.56.13:9200](http://192.168.56.13:9200)
-- **Hadoop**: [http://192.168.56.14:9870](http://192.168.56.14:9870)
-- **Grafana**: [http://192.168.56.15:3000](http://192.168.56.15:3000)
-- **Kibana**: [http://192.168.56.15:5601](http://192.168.56.15:5601)
+- **Nginx (nginx)**: [http://192.168.56.10](http://192.168.56.10)
+- **Apache (apache)**: [http://192.168.56.11](http://192.168.56.11)
+- **Kafka (kafka)**: [http://192.168.56.12:8080](http://192.168.56.12:8080)
+- **Prometheus (storage)**: [http://192.168.56.13:9090](http://192.168.56.13:9090/targets)
+- **Elasticsearch (storage)**: [http://192.168.56.13:9200](http://192.168.56.13:9200)
+- **Hadoop (hadoop)**: [http://192.168.56.14:9870](http://192.168.56.14:9870)
+- **Grafana (monitoring)**: [http://192.168.56.15:3000](http://192.168.56.15:3000)
+- **Kibana (monitoring)**: [http://192.168.56.15:5601](http://192.168.56.15:5601)
 
 ---
 

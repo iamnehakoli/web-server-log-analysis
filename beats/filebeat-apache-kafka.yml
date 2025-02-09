@@ -1,0 +1,45 @@
+# ============================== Filebeat inputs ===============================
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/apache2/access.log
+  fields:
+    service: apache2
+  fields_under_root: true
+
+# ============================== Filebeat modules ==============================
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+# =================================== Kibana ===================================
+setup.kibana:
+  host: "192.168.56.15:5601"
+
+# ======================= Kafka Output Configuration ===========================
+output.kafka:
+  enabled: true
+  hosts: ["192.168.56.12:9092"]
+  topic: "apache-logs"
+  version: 2.0.0 # Kafka version compatibility
+  compression: gzip # Optional: Compress messages for better performance
+  required_acks: 1 # Ensure at least one broker acknowledges the message
+  max_message_bytes: 1000000 # Maximum size of a single message (default: 1MB)
+
+# =============================== Logging Settings =============================
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
+
+# =============================== Processors ===================================
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+  - add_kubernetes_metadata: ~

@@ -74,7 +74,7 @@ install_filebeat() {
     systemctl status filebeat
 
     cp -R /etc/filebeat /etc/filebeat-kafka
-    cp /vagrant/beats/filebeat-kafka.yml /etc/filebeat-kafka/filebeat.yml
+    cp /vagrant/beats/filebeat-apache-kafka.yml /etc/filebeat-kafka/filebeat.yml
     cp /vagrant/beats/filebeat-kafka.service /etc/systemd/system/filebeat-kafka.service
 
     systemctl enable filebeat-kafka

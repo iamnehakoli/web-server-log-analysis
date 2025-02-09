@@ -79,6 +79,8 @@ start_kafka_services() {
     /opt/kafka/bin/kafka-server-start.sh -daemon /opt/kafka/config/server.properties
     sleep 10
     /opt/kafka/bin/kafka-topics.sh --create --topic nginx-logs --bootstrap-server 192.168.56.12:9092 --partitions 1 --replication-factor 1
+    /opt/kafka/bin/kafka-topics.sh --create --topic apache-logs --bootstrap-server 192.168.56.12:9092 --partitions 1 --replication-factor 1
+    /opt/kafka/bin/kafka-topics.sh --list --bootstrap-server 192.168.56.12:9092
     # /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 192.168.56.12:9092 --topic nginx-logs --group nginx-logs-consumer --from-beginning
 
 }

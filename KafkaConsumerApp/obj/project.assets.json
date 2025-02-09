@@ -3073,11 +3073,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\neha.koli\\Desktop\\msc-project\\latest-dev\\KafkaConsumerApp\\KafkaConsumerApp.csproj",
+      "projectUniqueName": "C:\\Users\\neha.koli\\Desktop\\msc-project\\web-server-log-analysis\\KafkaConsumerApp\\KafkaConsumerApp.csproj",
       "projectName": "KafkaConsumerApp",
-      "projectPath": "C:\\Users\\neha.koli\\Desktop\\msc-project\\latest-dev\\KafkaConsumerApp\\KafkaConsumerApp.csproj",
+      "projectPath": "C:\\Users\\neha.koli\\Desktop\\msc-project\\web-server-log-analysis\\KafkaConsumerApp\\KafkaConsumerApp.csproj",
       "packagesPath": "C:\\Users\\neha.koli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\neha.koli\\Desktop\\msc-project\\latest-dev\\KafkaConsumerApp\\obj\\",
+      "outputPath": "C:\\Users\\neha.koli\\Desktop\\msc-project\\web-server-log-analysis\\KafkaConsumerApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\neha.koli\\AppData\\Roaming\\NuGet\\NuGet.Config"
