@@ -30,6 +30,7 @@
       - [Step 1: Login to Apache VM](#step-1-login-to-apache-vm)
       - [Step 2: Clone and Set Up Fake Log Generator](#step-2-clone-and-set-up-fake-log-generator-1)
   - [Service Endpoints](#service-endpoints)
+  - [Destroy the VMs](#destroy-the-vms)
   - [Notes](#notes)
 
 ---
