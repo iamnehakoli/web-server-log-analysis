@@ -109,7 +109,7 @@ sudo su
 ```
 #### Step 2: Clone and Set Up Fake Log Generator
 ```sh
-git clone https://github.com/nehachitodkar/fake-log-generator.git
+git clone https://github.com/iamnehakoli/fake-log-generator.git
 virtualenv dev
 source dev/bin/activate
 cd fake-log-generator
@@ -130,7 +130,7 @@ sudo su
 ```
 #### Step 2: Clone and Set Up Fake Log Generator
 ```sh
-git clone https://github.com/nehachitodkar/fake-log-generator.git
+git clone https://github.com/ianehakoli/fake-log-generator.git
 virtualenv dev
 source dev/bin/activate
 cd fake-log-generator
