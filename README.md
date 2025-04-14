@@ -84,36 +84,6 @@ vagrant up storage; vagrant up kafka; vagrant up hadoop; vagrant up monitoring; 
 ---
 
 ## Kafka Log Consumption
-### Consume Nginx Logs
-#### Step 1: Login to Kafka VM
-Open a new terminal and run below command,
-```sh
-cd Documents\web-server-log-analysis\
-vagrant ssh kafka
-```
-
-#### Step 2: Consume Nginx Logs from Kafka Topic
-Run the below command in the same terminal,
-```sh
-/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 192.168.56.12:9092 --topic nginx-logs --from-beginning
-```
-
-### Consume Apache Logs
-#### Step 1: Login to second instance of Kafka VM
-Open a new terminal and run below command,
-```sh
-cd Documents\web-server-log-analysis\
-vagrant ssh kafka
-```
-
-#### Step 2: Consume Apache Logs from Kafka Topic
-Run the below command in the same terminal,
-```sh
-/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 192.168.56.12:9092 --topic apache-logs --from-beginning
-```
-
----
-
 ## Running .NET Core Kafka Consumer
 Open a new terminal to start the .NET Core application that reads Kafka messages and stores them in HDFS:
 
